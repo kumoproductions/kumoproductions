@@ -1,11 +1,17 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Logo from "../components/Logo.astro";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const description = "Coming soon.";
 ---
 
-<Layout>
-	<Welcome />
+<Layout description={description}>
+	<div
+		class="bg-black flex flex-col gap-10 items-center justify-center w-screen h-screen"
+	>
+		<svg viewBox="0 0 362.5 162.68" class="fill-white mx-20 max-w-screen-sm">
+			<Logo />
+		</svg>
+		<p class="text-white font-medium">Coming soon.</p>
+	</div>
 </Layout>

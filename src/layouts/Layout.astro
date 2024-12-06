@@ -1,22 +1,84 @@
+---
+const {
+	title,
+	description,
+	ogImage,
+} = Astro.props;
+
+const pageTitle = title ? `${title} | kumo.productions™` : "kumo.productions™";
+const pageDescription = description ? description : title;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={pageDescription} />
+		<title>{pageTitle}</title>
+
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:description" content={pageDescription} />
+		<meta
+			property="og:image"
+			content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+		/>
+		<meta
+			property="twitter:image"
+			content={ogImage || new URL("/default_ogp.jpg", Astro.url)}
+		/>
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="og:site_name" content="kumo.productions™" />
+		<script
+			defer
+			data-domain="kumo.productions"
+			src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"
+		></script>
+        <script>
+            window.plausible =
+                window.plausible ||
+                function () {
+                    (window.plausible.q = window.plausible.q || []).push(
+                        arguments,
+                    );
+                };
+        </script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="preload"
+			as="style"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=M+PLUS+1p&display=swap"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=M+PLUS+1p&display=swap"
+			media="all"
+		/>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<script is:inline>
+	document.addEventListener("DOMContentLoaded", () => {
+		const currentDomain = window.location.hostname;
+		const links = document.querySelectorAll("a");
+		links.forEach((link) => {
+			const href = link.getAttribute("href");
+			if (
+				href &&
+				href.startsWith("http") &&
+				!href.includes(currentDomain)
+			) {
+				link.setAttribute("target", "_blank");
+				link.setAttribute("rel", "noopener noreferrer");
+			}
+		});
+	});
+</script>
