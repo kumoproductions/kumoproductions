@@ -1,0 +1,7 @@
+{
+    "cSpell.words": [
+        "kumo"
+    ],
+	"css.lint.unknownAtRules": "ignore",
+	"typescript.validate.enable": false
+}
