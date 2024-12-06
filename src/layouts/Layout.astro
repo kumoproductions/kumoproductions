@@ -1,11 +1,9 @@
 ---
-const {
-	title,
-	description,
-	ogImage,
-} = Astro.props;
+const { title, description, ogImage } = Astro.props;
 
-const pageTitle = title ? `${title} | kumo.productions™` : "kumo.productions™";
+const pageTitle = title
+	? `${title} | kumo.productions™`
+	: "kumo.productions™";
 const pageDescription = description ? description : title;
 ---
 
@@ -36,17 +34,17 @@ const pageDescription = description ? description : title;
 		<script
 			defer
 			data-domain="kumo.productions"
-			src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"
+			src="https://analytics.cumulo.works/js/script.file-downloads.outbound-links.tagged-events.js"
 		></script>
-        <script>
-            window.plausible =
-                window.plausible ||
-                function () {
-                    (window.plausible.q = window.plausible.q || []).push(
-                        arguments,
-                    );
-                };
-        </script>
+		<script>
+			window.plausible =
+				window.plausible ||
+				function () {
+					(window.plausible.q = window.plausible.q || []).push(
+						arguments,
+					);
+				};
+		</script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
